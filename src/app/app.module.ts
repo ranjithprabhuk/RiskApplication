@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NAV_DROPDOWN_DIRECTIVES } from './shared/nav-dropdown.directive';
 
 import { ChartsModule } from 'ng2-charts/ng2-charts';
@@ -32,7 +33,8 @@ import { LoaderComponent, LoaderService } from './shared/loader';
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     ToastrModule.forRoot(),
-    ChartsModule
+    ChartsModule,
+    BrowserAnimationsModule
   ],
   declarations: [
     AppComponent,
