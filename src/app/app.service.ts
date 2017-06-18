@@ -10,7 +10,7 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class ApiService {
     private apiBase = new AppConfig().apiBase;
-    private headers = new Headers({ 'Content-Type': 'application/json' });
+    private headers = new Headers();
 
     constructor(private http: Http, public loader: LoaderService, public notification: ToastrService) { }
 
@@ -61,7 +61,7 @@ export class ApiService {
         this.loader.loader.emit(false);
         this.notification.success("Data Fetched Succesfully!");
         
-        return Promise.resolve(response);
+        return Promise.resolve(response['_body'] || '');
 
     }
 
