@@ -6,6 +6,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  box-shadow: 1px 2px 4px #eee;
   background-color: $card-bg;
   border: $card-border-width solid $card-border-color;
   @include border-radius($card-border-radius);
