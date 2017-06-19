@@ -57,10 +57,8 @@ export class ApiService {
 
     //for successfull API response
     private handleSuccess(response: any): Promise<any> {
-        console.log(response);
         this.loader.loader.emit(false);
-        this.notification.success("Data Fetched Succesfully!");
-        
+        this.notification.success("Data Fetched Succesfully!");        
         return Promise.resolve(response['_body'] || '');
 
     }

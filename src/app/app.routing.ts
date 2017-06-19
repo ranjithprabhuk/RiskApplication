@@ -20,13 +20,17 @@ export const routes: Routes = [
       {
         path: 'settle',
         loadChildren: './settle/settle.module#SettleModule'
+      },
+      {
+        path: 'un-settle',
+        loadChildren: './unsettle/unsettle.module#UnSettleModule'
       }
     ]
   }
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],
-  exports: [ RouterModule ]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
