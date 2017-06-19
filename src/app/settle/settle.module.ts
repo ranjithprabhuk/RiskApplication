@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
+import { ChartsModule } from 'ng2-charts/ng2-charts';
+
 import { SettleComponent } from './settle.component';
 import { SettleRoutingModule } from './settle-routing.module';
 
@@ -9,7 +11,8 @@ import { SettleRoutingModule } from './settle-routing.module';
   imports: [
     SettleRoutingModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    ChartsModule
   ],
   declarations: [ SettleComponent ]
 })
