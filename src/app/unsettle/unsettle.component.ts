@@ -53,6 +53,7 @@ export class UnSettleComponent {
 
       //calculate the risk
       result[i].isRisky = this.calculateRisk(result[i]);
+      result[i].Percentage = this.calculatePercentage(result[i]);
       this.barChartData[0].data.push(result[i].Stake);
       this.barChartData[1].data.push(result[i].Win);
       this.customerList.push(result[i].Customer);
@@ -71,19 +72,21 @@ export class UnSettleComponent {
 
       let currentline = lines[i].split(",");
       let customer = currentline[0];
+      if (!isNaN(parseInt(customer))) {
+        if (result && result[customer]) {
+          result[customer][headers[3]] += parseInt(currentline[3]);
+          result[customer][headers[4]] += parseInt(currentline[4]);
+        } else {
+          //create a new object in the result object
+          result[customer] = {};
 
-      if (result && result[customer]) {
-        result[customer][headers[3]] += parseInt(currentline[3]);
-        result[customer][headers[4]] += parseInt(currentline[4]);
-      } else {
-        //create a new object in the result object
-        result[customer] = {};
-
-        //iterate the single line and contruct the JSON object
-        for (let j = 0; j < headers.length; j++) {
-          result[customer][headers[j]] = parseInt(currentline[j]);
+          //iterate the single line and contruct the JSON object
+          for (let j = 0; j < headers.length; j++) {
+            result[customer][headers[j]] = parseInt(currentline[j]);
+          }
         }
       }
+
     }
 
     return result;
@@ -92,6 +95,11 @@ export class UnSettleComponent {
   //calculate the risk
   public calculateRisk(data: any): boolean {
     return data.Stake / 100 * 60 < data.Win ? true : false;
+  }
+
+  //calculate the Percentage
+  public calculatePercentage(data: any): number {
+    return data.Stake / data.Win * 100;
   }
 
 

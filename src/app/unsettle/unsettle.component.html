@@ -43,4 +43,61 @@
     <!--/.col-->
   </div>
   <!--/.row-->
+
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="card" *ngIf="settledList.length">
+        <div class="card-header">
+          Un Settled Bets for Customer<span class="float-right"><span class="badge badge-info">10% higher</span> <span class="badge badge-danger">20% higher</span></span>
+        </div>
+        <div class="card-block">
+          <table class="table table-bordered table-striped table-sm">
+            <thead>
+              <tr>
+                <th>Customer</th>
+                <th>Stake</th>
+                <th>Win</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of settledList" [ngClass]="{'bg-info' : data.Percentage > 10,'bg-danger' : data.Percentage > 20}">
+                <td>{{data.Customer}}</td>
+                <td>{{data.Stake}}</td>
+                <td>{{data.Win}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <nav>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="card" *ngIf="settledList.length">
+        <div class="card-header">
+          Un Settled Bets for Customer<span class="float-right"><span class="badge badge-success">1000$ higher</span></span>
+        </div>
+        <div class="card-block">
+          <table class="table table-bordered table-striped table-sm">
+            <thead>
+              <tr>
+                <th>Customer</th>
+                <th>Stake</th>
+                <th>Win</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of settledList" [ngClass]="{'bg-success' : data.Win > 1000}">
+                <td>{{data.Customer}}</td>
+                <td>{{data.Stake}}</td>
+                <td>{{data.Win}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <nav>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
